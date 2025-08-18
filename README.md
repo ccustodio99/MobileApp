@@ -27,7 +27,7 @@ Level Up @ LCCD is a **Kotlin + Jetpack Compose** Android application designed t
 ---
 
 ## 🎯 Features
-- **Daily Quests:** Quick logic and coding challenges.
+- **Daily Quests:** Rotating logic and coding challenges with instant feedback.
 - **Career Explorer:** Interactive cards for BSCS and BSIS pathways.
 - **Values Quests:** Story-based activities aligned with LCCD’s Augustinian values.
 - **Leaderboards:** Friendly competition to boost engagement.
