@@ -14,6 +14,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.compose.material3.ExperimentalMaterial3Api // Added import
+import com.example.leveluplccd.ui.theme.LevelUpLccdTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun LevelUpLccdApp() {
-    MaterialTheme {
+    LevelUpLccdTheme {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = Destinations.Home.route) {
             composable(Destinations.Home.route) {
