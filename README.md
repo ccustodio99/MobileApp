@@ -101,6 +101,25 @@ app/
 - **Apply/Inquiry Funnel:** Direct link to admissions.
 - **Notifications:** Streak reminders, events.
 
+### Daily Quests
+- **Structure:** Each quest includes an `id`, `question` text, a list of `options`, the `answerIndex` of the correct choice, and `points` awarded for success.
+- **Example:**
+  ```json
+  {
+    "id": "logic-001",
+    "question": "What is 2 + 2?",
+    "options": ["3", "4", "5"],
+    "answerIndex": 1,
+    "points": 10
+  }
+  ```
+- **Rotation:** One quest is served per day. The app cycles through a local JSON list and can fetch additional quests from a remote source when available.
+- **Adding New Quests:** Append entries to `quests.json` or push updates from an online repository/endpoint to refresh the pool.
+- **Example Flow:**
+  1. User taps **Daily Quest** on the home screen.
+  2. Question with multiple choices appears.
+  3. Selecting an option reveals instant feedback and awards points.
+
 ### 3) Data & Storage
 - **Local:** DataStore (progress, profile).
 - **Cloud:** Firebase/REST for leaderboards, referrals, events.
