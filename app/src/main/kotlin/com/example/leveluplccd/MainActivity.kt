@@ -31,7 +31,7 @@ fun LevelUpLccdApp() {
             composable(Destinations.Home.route) {
                 HomeScreen(onNavigate = { navController.navigate(it.route) })
             }
-            composable(Destinations.Quest.route) { QuestScreen() }
+            composable(Destinations.Quest.route) { com.example.leveluplccd.quest.DailyQuestScreen() }
             composable(Destinations.Career.route) { CareerScreen() }
             composable(Destinations.Leaderboard.route) { LeaderboardScreen() }
         }
