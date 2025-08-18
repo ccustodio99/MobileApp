@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -39,7 +40,7 @@ fun LevelUpLccdApp() {
 @OptIn(ExperimentalMaterial3Api::class) // Added annotation
 @Composable
 fun HomeScreen(onNavigate: (Destinations) -> Unit) {
-    Scaffold(topBar = { SmallTopAppBar(title = { Text("Level Up @ LCCD") }) }) { padding ->
+    Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(R.string.level_up_lccd)) }) }) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -47,11 +48,11 @@ fun HomeScreen(onNavigate: (Destinations) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Button(onClick = { onNavigate(Destinations.Quest) }) { Text("Daily Quest") }
+            Button(onClick = { onNavigate(Destinations.Quest) }) { Text(stringResource(R.string.daily_quest)) }
             Spacer(Modifier.height(8.dp))
-            Button(onClick = { onNavigate(Destinations.Career) }) { Text("Career Explorer") }
+            Button(onClick = { onNavigate(Destinations.Career) }) { Text(stringResource(R.string.career_explorer)) }
             Spacer(Modifier.height(8.dp))
-            Button(onClick = { onNavigate(Destinations.Leaderboard) }) { Text("Leaderboard") }
+            Button(onClick = { onNavigate(Destinations.Leaderboard) }) { Text(stringResource(R.string.leaderboard)) }
         }
     }
 }
