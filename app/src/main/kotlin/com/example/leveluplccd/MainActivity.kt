@@ -25,18 +25,20 @@ class MainActivity : ComponentActivity() {
 fun LevelUpLccdApp() {
     MaterialTheme {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "home") {
-            composable("home") { HomeScreen(onNavigate = { navController.navigate(it) }) }
-            composable("quest") { QuestScreen() }
-            composable("career") { CareerScreen() }
-            composable("leaderboard") { LeaderboardScreen() }
+        NavHost(navController = navController, startDestination = Destinations.Home.route) {
+            composable(Destinations.Home.route) {
+                HomeScreen(onNavigate = { navController.navigate(it.route) })
+            }
+            composable(Destinations.Quest.route) { QuestScreen() }
+            composable(Destinations.Career.route) { CareerScreen() }
+            composable(Destinations.Leaderboard.route) { LeaderboardScreen() }
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class) // Added annotation
 @Composable
-fun HomeScreen(onNavigate: (String) -> Unit) {
+fun HomeScreen(onNavigate: (Destinations) -> Unit) {
     Scaffold(topBar = { SmallTopAppBar(title = { Text("Level Up @ LCCD") }) }) { padding ->
         Column(
             modifier = Modifier
@@ -45,11 +47,11 @@ fun HomeScreen(onNavigate: (String) -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Button(onClick = { onNavigate("quest") }) { Text("Daily Quest") }
+            Button(onClick = { onNavigate(Destinations.Quest) }) { Text("Daily Quest") }
             Spacer(Modifier.height(8.dp))
-            Button(onClick = { onNavigate("career") }) { Text("Career Explorer") }
+            Button(onClick = { onNavigate(Destinations.Career) }) { Text("Career Explorer") }
             Spacer(Modifier.height(8.dp))
-            Button(onClick = { onNavigate("leaderboard") }) { Text("Leaderboard") }
+            Button(onClick = { onNavigate(Destinations.Leaderboard) }) { Text("Leaderboard") }
         }
     }
 }
