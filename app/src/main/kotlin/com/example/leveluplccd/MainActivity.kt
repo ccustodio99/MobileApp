@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.compose.material3.ExperimentalMaterial3Api // Added import
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,7 @@ fun LevelUpLccdApp() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class) // Added annotation
 @Composable
 fun HomeScreen(onNavigate: (String) -> Unit) {
     Scaffold(topBar = { SmallTopAppBar(title = { Text("Level Up @ LCCD") }) }) { padding ->
@@ -52,6 +54,7 @@ fun HomeScreen(onNavigate: (String) -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class) // Added annotation
 @Composable
 fun PlaceholderScreen(title: String) {
     Scaffold(topBar = { SmallTopAppBar(title = { Text(title) }) }) { padding ->
