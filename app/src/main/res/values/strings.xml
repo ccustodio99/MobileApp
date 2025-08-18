@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LevelUpLccd</string>
+
+    <string name="level_up_lccd">Level Up @ LCCD</string>
+    <string name="daily_quest">Daily Quest</string>
+    <string name="career_explorer">Career Explorer</string>
+    <string name="leaderboard">Leaderboard</string>
 </resources>
