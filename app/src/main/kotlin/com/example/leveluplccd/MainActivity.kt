@@ -27,9 +27,9 @@ fun LevelUpLccdApp() {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "home") {
             composable("home") { HomeScreen(onNavigate = { navController.navigate(it) }) }
-            composable("quest") { PlaceholderScreen("Quest Screen") }
-            composable("career") { PlaceholderScreen("Career Screen") }
-            composable("leaderboard") { PlaceholderScreen("Leaderboard") }
+            composable("quest") { QuestScreen() }
+            composable("career") { CareerScreen() }
+            composable("leaderboard") { LeaderboardScreen() }
         }
     }
 }
@@ -54,17 +54,3 @@ fun HomeScreen(onNavigate: (String) -> Unit) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class) // Added annotation
-@Composable
-fun PlaceholderScreen(title: String) {
-    Scaffold(topBar = { SmallTopAppBar(title = { Text(title) }) }) { padding ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(text = title)
-        }
-    }
-}
