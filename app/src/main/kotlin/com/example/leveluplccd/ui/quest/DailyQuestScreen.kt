@@ -2,11 +2,10 @@ package com.example.leveluplccd.ui.quest
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SmallTopAppBar
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -20,7 +19,6 @@ import com.example.leveluplccd.domain.DailyQuestViewModel
 import com.example.leveluplccd.domain.DailyQuestViewModelFactory
 
 /** Composable screen that presents the daily quest. */
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DailyQuestScreen(viewModelFactory: DailyQuestViewModelFactory) {
     val viewModel: DailyQuestViewModel = viewModel(
@@ -30,7 +28,7 @@ fun DailyQuestScreen(viewModelFactory: DailyQuestViewModelFactory) {
     val quest = state.quest
 
     Scaffold(
-        topBar = { SmallTopAppBar(title = { Text(stringResource(id = R.string.daily_quest)) }) }
+        topBar = { TopAppBar(title = { Text(stringResource(id = R.string.daily_quest)) }) }
     ) { padding ->
         Column(
             modifier = Modifier

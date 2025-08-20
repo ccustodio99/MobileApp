@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.annotation.StringRes
 import com.example.leveluplccd.R
 import com.example.leveluplccd.util.Config
@@ -31,11 +30,10 @@ private val careers = listOf(
     )
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CareerScreen() {
     val context = LocalContext.current
-    Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(id = R.string.career_explorer)) }) }) { padding ->
+    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(id = R.string.career_explorer)) }) }) { padding ->
         LazyColumn(
             modifier = Modifier
                 .padding(padding)
