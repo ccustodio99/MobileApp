@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.annotation.StringRes
 import com.example.leveluplccd.R
+import com.example.leveluplccd.util.Config
 
 private data class Career(@StringRes val title: Int, @StringRes val description: Int, val url: String)
 
@@ -21,12 +22,12 @@ private val careers = listOf(
     Career(
         title = R.string.bs_computer_science_title,
         description = R.string.bs_computer_science_description,
-        url = "https://lccd.edu"
+        url = Config.apiBaseUrl
     ),
     Career(
         title = R.string.bs_information_systems_title,
         description = R.string.bs_information_systems_description,
-        url = "https://lccd.edu"
+        url = Config.apiBaseUrl
     )
 )
 
