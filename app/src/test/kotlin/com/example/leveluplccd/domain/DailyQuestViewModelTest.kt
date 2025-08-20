@@ -1,6 +1,8 @@
 package com.example.leveluplccd.domain
 
+import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
 import com.example.leveluplccd.R
 import com.example.leveluplccd.data.QuestRepository
 import kotlinx.coroutines.Dispatchers
@@ -19,20 +21,20 @@ import java.io.File
 @OptIn(ExperimentalCoroutinesApi::class)
 class DailyQuestViewModelTest {
 
-    private fun TestScope.createViewModel(): DailyQuestViewModel {
+    private fun TestScope.createViewModel(): Pair<DailyQuestViewModel, DataStore<Preferences>> {
         val dataStore = PreferenceDataStoreFactory.create(scope = this) {
             File.createTempFile("datastore", ".preferences")
         }
         val repository = QuestRepository(dataStore)
-        return DailyQuestViewModel(repository)
+        return DailyQuestViewModel(repository) to dataStore
     }
 
     @Test
     fun submitAnswer_updatesStateForCorrectAndIncorrect() = runTest {
         val dispatcher = StandardTestDispatcher(testScheduler)
         Dispatchers.setMain(dispatcher)
+        val (viewModel, dataStore) = createViewModel()
         try {
-            val viewModel = createViewModel()
             advanceUntilIdle()
 
             val firstQuest = viewModel.state.value.quest!!
@@ -56,6 +58,7 @@ class DailyQuestViewModelTest {
                 assertEquals(0, state.streak)
             }
         } finally {
+            dataStore.close()
             Dispatchers.resetMain()
         }
     }
@@ -64,8 +67,8 @@ class DailyQuestViewModelTest {
     fun clearFeedback_resetsFeedbackAndExplanation() = runTest {
         val dispatcher = StandardTestDispatcher(testScheduler)
         Dispatchers.setMain(dispatcher)
+        val (viewModel, dataStore) = createViewModel()
         try {
-            val viewModel = createViewModel()
             advanceUntilIdle()
 
             val quest = viewModel.state.value.quest!!
@@ -77,6 +80,7 @@ class DailyQuestViewModelTest {
             assertNull(state.feedback)
             assertNull(state.explanation)
         } finally {
+            dataStore.close()
             Dispatchers.resetMain()
         }
     }
