@@ -1,10 +1,11 @@
-package com.example.leveluplccd.quest
+package com.example.leveluplccd.domain
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import androidx.annotation.StringRes
 import com.example.leveluplccd.R
+import com.example.leveluplccd.data.QuestRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
