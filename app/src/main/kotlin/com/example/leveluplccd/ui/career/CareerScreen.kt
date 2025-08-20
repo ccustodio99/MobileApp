@@ -1,4 +1,4 @@
-package com.example.leveluplccd
+package com.example.leveluplccd.ui.career
 
 import android.content.Intent
 import android.net.Uri
@@ -13,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.annotation.StringRes
+import com.example.leveluplccd.R
 
 private data class Career(@StringRes val title: Int, @StringRes val description: Int, val url: String)
 
