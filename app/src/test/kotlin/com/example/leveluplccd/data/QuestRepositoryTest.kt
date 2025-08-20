@@ -1,11 +1,10 @@
 package com.example.leveluplccd.data
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.TestScope
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
@@ -13,21 +12,21 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class QuestRepositoryTest {
 
     @get:Rule
     val tmp = TemporaryFolder()
 
-    private fun createRepository(): QuestRepository {
-        val scope = kotlinx.coroutines.CoroutineScope(Dispatchers.IO)
-        val dataStore: DataStore<Preferences> = PreferenceDataStoreFactory.create(scope = scope) {
+    private fun TestScope.createRepository(): QuestRepository {
+        val dataStore = PreferenceDataStoreFactory.create(scope = this) {
             tmp.newFile("test.preferences_pb")
         }
         return QuestRepository(dataStore)
     }
 
     @Test
-    fun submitAnswerCorrect_rotatesAndScores() = runBlocking {
+    fun correctAnswerRotatesQuestAndIncrementsScore() = runTest {
         val repo = createRepository()
         val firstQuest = repo.currentQuest.first()
         val result = repo.submitAnswer(firstQuest.correctOptionId)
@@ -39,7 +38,7 @@ class QuestRepositoryTest {
     }
 
     @Test
-    fun submitAnswerWrong_resetsStreak() = runBlocking {
+    fun incorrectAnswerKeepsQuestAndResetsStreak() = runTest {
         val repo = createRepository()
         val firstQuest = repo.currentQuest.first()
         val wrongOption = firstQuest.options.first { it.id != firstQuest.correctOptionId }.id
@@ -51,3 +50,4 @@ class QuestRepositoryTest {
         assertEquals(0, repo.streak.first())
     }
 }
+
