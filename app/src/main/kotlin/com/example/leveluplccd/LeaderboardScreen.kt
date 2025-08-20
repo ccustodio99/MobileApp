@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
 
@@ -21,7 +22,7 @@ private val players = listOf(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LeaderboardScreen() {
-    Scaffold(topBar = { SmallTopAppBar(title = { Text("Leaderboard") }) }) { padding ->
+    Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(id = R.string.leaderboard)) }) }) { padding ->
         LazyColumn(
             modifier = Modifier
                 .padding(padding)
@@ -34,11 +35,11 @@ fun LeaderboardScreen() {
                         .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "${index + 1}.", modifier = Modifier.width(24.dp))
+                    Text(text = stringResource(id = R.string.rank_format, index + 1), modifier = Modifier.width(24.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(player.name, style = MaterialTheme.typography.titleMedium)
                     }
-                    Text(text = "${player.points} pts")
+                    Text(text = stringResource(id = R.string.points, player.points))
                 }
                 Divider()
             }

@@ -9,20 +9,22 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.annotation.StringRes
 
-private data class Career(val title: String, val description: String, val url: String)
+private data class Career(@StringRes val title: Int, @StringRes val description: Int, val url: String)
 
 private val careers = listOf(
     Career(
-        title = "BS Computer Science",
-        description = "Focus on software engineering, algorithms, and AI.",
+        title = R.string.bs_computer_science_title,
+        description = R.string.bs_computer_science_description,
         url = "https://lccd.edu"
     ),
     Career(
-        title = "BS Information Systems",
-        description = "Blend of business processes and IT solutions.",
+        title = R.string.bs_information_systems_title,
+        description = R.string.bs_information_systems_description,
         url = "https://lccd.edu"
     )
 )
@@ -31,7 +33,7 @@ private val careers = listOf(
 @Composable
 fun CareerScreen() {
     val context = LocalContext.current
-    Scaffold(topBar = { SmallTopAppBar(title = { Text("Career Explorer") }) }) { padding ->
+    Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(id = R.string.career_explorer)) }) }) { padding ->
         LazyColumn(
             modifier = Modifier
                 .padding(padding)
@@ -43,15 +45,15 @@ fun CareerScreen() {
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)) {
                     Column(modifier = Modifier.padding(16.dp)) {
-                        Text(career.title, style = MaterialTheme.typography.titleMedium)
+                        Text(stringResource(id = career.title), style = MaterialTheme.typography.titleMedium)
                         Spacer(Modifier.height(8.dp))
-                        Text(career.description)
+                        Text(stringResource(id = career.description))
                         Spacer(Modifier.height(8.dp))
                         Button(onClick = {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(career.url))
                             context.startActivity(intent)
                         }) {
-                            Text("Learn More")
+                            Text(stringResource(id = R.string.learn_more))
                         }
                     }
                 }
