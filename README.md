@@ -155,10 +155,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details. Quick guide:
 ---
 
 ## 📸 Screenshots & Demo
-<p align="center">
-  <img src="docs/screen1.png" width="200" />
-  <img src="docs/screen2.png" width="200" />
-</p>
+Screenshots coming soon.
 
 [▶ Watch Demo Video](https://youtu.be/your-demo-link)
 
