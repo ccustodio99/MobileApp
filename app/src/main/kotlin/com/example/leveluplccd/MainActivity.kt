@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -47,10 +46,9 @@ fun LevelUpLccdApp(dailyQuestViewModelFactory: DailyQuestViewModelFactory) {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onNavigate: (Destinations) -> Unit) {
-    Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(R.string.level_up_lccd)) }) }) { padding ->
+    Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.level_up_lccd)) }) }) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
