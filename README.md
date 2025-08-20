@@ -81,7 +81,7 @@ app/
    ```
 2. Open in **Android Studio** (Arctic Fox or newer).  
 3. Sync Gradle and install dependencies.  
-4. Create a `.env` file from `.env.example` (for Firebase keys, API URLs).  
+4. Copy `.env.example` to `.env` and fill in the required keys (e.g., `FIREBASE_API_KEY`, `API_BASE_URL`).
 5. Run the app on an Android device or emulator (API 24+).
 
 ### Running Tests
