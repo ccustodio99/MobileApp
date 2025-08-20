@@ -1,4 +1,4 @@
-package com.example.leveluplccd.quest
+package com.example.leveluplccd.ui.quest
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
@@ -16,6 +16,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.leveluplccd.R
+import com.example.leveluplccd.data.QuestRepository
+import com.example.leveluplccd.domain.DailyQuestViewModel
+import com.example.leveluplccd.domain.DailyQuestViewModelFactory
 
 /** Composable screen that presents the daily quest. */
 @Composable

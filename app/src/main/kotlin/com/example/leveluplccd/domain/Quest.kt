@@ -1,4 +1,4 @@
-package com.example.leveluplccd.quest
+package com.example.leveluplccd.domain
 
 /** Represents a single answer option for a [Quest]. */
 data class QuestOption(
