@@ -11,21 +11,18 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.leveluplccd.R
-import com.example.leveluplccd.data.QuestRepository
 import com.example.leveluplccd.domain.DailyQuestViewModel
 import com.example.leveluplccd.domain.DailyQuestViewModelFactory
 
 /** Composable screen that presents the daily quest. */
 @Composable
-fun DailyQuestScreen() {
-    val context = LocalContext.current
+fun DailyQuestScreen(viewModelFactory: DailyQuestViewModelFactory) {
     val viewModel: DailyQuestViewModel = viewModel(
-        factory = DailyQuestViewModelFactory(QuestRepository(context))
+        factory = viewModelFactory
     )
     val state by viewModel.state.collectAsState()
     val quest = state.quest
