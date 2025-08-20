@@ -5,15 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.compose.NavHost
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import androidx.compose.material3.ExperimentalMaterial3Api // Added import
 import com.example.leveluplccd.ui.theme.LevelUpLccdTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,7 +38,7 @@ fun LevelUpLccdApp() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class) // Added annotation
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(onNavigate: (Destinations) -> Unit) {
     Scaffold(topBar = { SmallTopAppBar(title = { Text(stringResource(R.string.level_up_lccd)) }) }) { padding ->
