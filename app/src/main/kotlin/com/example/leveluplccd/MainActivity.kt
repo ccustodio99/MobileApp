@@ -14,27 +14,33 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.leveluplccd.di.AppModule
+import com.example.leveluplccd.domain.DailyQuestViewModelFactory
 import com.example.leveluplccd.ui.career.CareerScreen
 import com.example.leveluplccd.ui.leaderboard.LeaderboardScreen
 import com.example.leveluplccd.ui.quest.DailyQuestScreen
 import com.example.leveluplccd.ui.theme.LevelUpLccdTheme
 
 class MainActivity : ComponentActivity() {
+    private val dailyQuestViewModelFactory: DailyQuestViewModelFactory by lazy {
+        AppModule.provideDailyQuestViewModelFactory(applicationContext)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent { LevelUpLccdApp() }
+        setContent { LevelUpLccdApp(dailyQuestViewModelFactory) }
     }
 }
 
 @Composable
-fun LevelUpLccdApp() {
+fun LevelUpLccdApp(dailyQuestViewModelFactory: DailyQuestViewModelFactory) {
     LevelUpLccdTheme {
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = Destinations.Home.route) {
             composable(Destinations.Home.route) {
                 HomeScreen(onNavigate = { navController.navigate(it.route) })
             }
-            composable(Destinations.Quest.route) { DailyQuestScreen() }
+            composable(Destinations.Quest.route) { DailyQuestScreen(dailyQuestViewModelFactory) }
             composable(Destinations.Career.route) { CareerScreen() }
             composable(Destinations.Leaderboard.route) { LeaderboardScreen() }
         }
