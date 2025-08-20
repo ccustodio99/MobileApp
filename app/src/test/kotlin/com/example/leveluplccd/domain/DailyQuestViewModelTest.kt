@@ -5,6 +5,7 @@ import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
 import com.example.leveluplccd.R
 import com.example.leveluplccd.data.QuestRepository
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -37,7 +38,7 @@ class DailyQuestViewModelTest {
         try {
             advanceUntilIdle()
 
-            val firstQuest = viewModel.state.value.quest!!
+            val firstQuest = viewModel.state.first { it.quest != null }.quest!!
             viewModel.submitAnswer(firstQuest.correctOptionId)
             advanceUntilIdle()
             viewModel.state.value.let { state ->
@@ -47,7 +48,7 @@ class DailyQuestViewModelTest {
                 assertEquals(1, state.streak)
             }
 
-            val secondQuest = viewModel.state.value.quest!!
+            val secondQuest = viewModel.state.first { it.quest != null }.quest!!
             val wrongOption = secondQuest.options.first { it.id != secondQuest.correctOptionId }.id
             viewModel.submitAnswer(wrongOption)
             advanceUntilIdle()
@@ -71,7 +72,7 @@ class DailyQuestViewModelTest {
         try {
             advanceUntilIdle()
 
-            val quest = viewModel.state.value.quest!!
+            val quest = viewModel.state.first { it.quest != null }.quest!!
             viewModel.submitAnswer(quest.correctOptionId)
             advanceUntilIdle()
 
