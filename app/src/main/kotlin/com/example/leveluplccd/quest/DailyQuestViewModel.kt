@@ -3,6 +3,8 @@ package com.example.leveluplccd.quest
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import androidx.annotation.StringRes
+import com.example.leveluplccd.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -16,7 +18,7 @@ data class DailyQuestState(
     val quest: Quest? = null,
     val score: Int = 0,
     val streak: Int = 0,
-    val feedback: String? = null,
+    @StringRes val feedback: Int? = null,
     val explanation: String? = null
 )
 
@@ -51,7 +53,7 @@ class DailyQuestViewModel(private val repository: QuestRepository) : ViewModel()
             val quest = _state.value.quest
             _state.update {
                 it.copy(
-                    feedback = if (correct) "Correct!" else "Try again",
+                    feedback = if (correct) R.string.correct_feedback else R.string.try_again_feedback,
                     explanation = if (correct) quest?.explanation else null
                 )
             }

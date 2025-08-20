@@ -56,7 +56,7 @@ fun DailyQuestScreen() {
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 state.feedback?.let {
-                    Text(text = it)
+                    Text(text = stringResource(id = it))
                     state.explanation?.let { exp -> Text(text = exp) }
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(onClick = { viewModel.clearFeedback() }) {

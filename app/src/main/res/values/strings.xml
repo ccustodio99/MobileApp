@@ -8,4 +8,13 @@
     <string name="next_question">Next Question</string>
     <string name="streak">Streak: %1$d</string>
     <string name="score">Score: %1$d</string>
+    <string name="learn_more">Learn More</string>
+    <string name="correct_feedback">Correct!</string>
+    <string name="try_again_feedback">Try again</string>
+    <string name="points">%1$d pts</string>
+    <string name="rank_format">%1$d.</string>
+    <string name="bs_computer_science_title">BS Computer Science</string>
+    <string name="bs_computer_science_description">Focus on software engineering, algorithms, and AI.</string>
+    <string name="bs_information_systems_title">BS Information Systems</string>
+    <string name="bs_information_systems_description">Blend of business processes and IT solutions.</string>
 </resources>
