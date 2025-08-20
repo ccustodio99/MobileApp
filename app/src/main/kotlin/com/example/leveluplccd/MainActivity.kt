@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.leveluplccd.ui.career.CareerScreen
+import com.example.leveluplccd.ui.leaderboard.LeaderboardScreen
 import com.example.leveluplccd.ui.quest.DailyQuestScreen
 import com.example.leveluplccd.ui.theme.LevelUpLccdTheme
 

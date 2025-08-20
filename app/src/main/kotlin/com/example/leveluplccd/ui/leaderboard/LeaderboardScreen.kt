@@ -1,4 +1,4 @@
-package com.example.leveluplccd
+package com.example.leveluplccd.ui.leaderboard
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.material3.ExperimentalMaterial3Api
+import com.example.leveluplccd.R
 
 private data class Player(val name: String, val points: Int)
 
